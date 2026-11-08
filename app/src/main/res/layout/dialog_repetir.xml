@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Repetir"
+        android:textColor="#FFF2F4F8"
+        android:textSize="23sp" />
+
+    <TextView
+        android:id="@+id/resumen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:textColor="#FFB2B9C8"
+        android:textSize="15sp" />
+
+    <LinearLayout
+        android:id="@+id/dias"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="24dp"
+        android:orientation="horizontal" />
+
+    <view
+        android:id="@+id/aceptar"
+        class="com.valentin.despertador.ui.widget.Styled$AccentButton"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:letterSpacing="0.06"
+        android:text="Aceptar"
+        android:textSize="17sp" />
+</LinearLayout>

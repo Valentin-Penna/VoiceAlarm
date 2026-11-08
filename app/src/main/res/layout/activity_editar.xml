@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/raiz"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/barra"
+        layout="@layout/barra_superior" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="22dp"
+            android:paddingEnd="22dp">
+
+            <TextView
+                style="@style/Etiqueta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nombre de la alarma" />
+
+            <EditText
+                android:id="@+id/nombre"
+                style="@style/Campo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Alarma"
+                android:importantForAutofill="no"
+                android:inputType="textCapSentences"
+                android:singleLine="true"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:id="@+id/caja_rueda"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp"
+                android:orientation="horizontal"
+                android:paddingStart="18dp"
+                android:paddingTop="22dp"
+                android:paddingEnd="18dp"
+                android:paddingBottom="22dp">
+
+                <com.valentin.despertador.ui.widget.WheelView
+                    android:id="@+id/horas"
+                    android:layout_width="64dp"
+                    android:layout_height="wrap_content" />
+
+                <com.valentin.despertador.ui.widget.ColonView
+                    android:layout_width="6dp"
+                    android:layout_height="match_parent" />
+
+                <com.valentin.despertador.ui.widget.WheelView
+                    android:id="@+id/minutos"
+                    android:layout_width="64dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <view
+                android:id="@+id/proxima"
+                class="com.valentin.despertador.ui.widget.Styled$AccentText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:gravity="center"
+                android:textSize="16sp" />
+
+            <TextView
+                style="@style/Etiqueta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:text="Mensaje de voz" />
+
+            <EditText
+                android:id="@+id/mensaje"
+                style="@style/Campo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="top|start"
+                android:hint="Lo que dirá la voz"
+                android:importantForAutofill="no"
+                android:inputType="textCapSentences|textMultiLine"
+                android:minLines="3"
+                android:textSize="20sp" />
+
+            <view
+                android:id="@+id/repetir"
+                class="com.valentin.despertador.ui.widget.Styled$Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:orientation="vertical"
+                android:paddingStart="18dp"
+                android:paddingTop="22dp"
+                android:paddingEnd="18dp"
+                android:paddingBottom="22dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Repetir"
+                    android:textColor="#FFF2F4F8"
+                    android:textSize="19sp" />
+
+                <TextView
+                    android:id="@+id/repetir_texto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:textColor="#FFB2B9C8"
+                    android:textSize="15sp" />
+            </view>
+
+            <view
+                android:id="@+id/movimiento"
+                class="com.valentin.despertador.ui.widget.Styled$Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="18dp"
+                android:paddingTop="22dp"
+                android:paddingEnd="18dp"
+                android:paddingBottom="22dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Posponer por movimiento"
+                        android:textColor="#FFF2F4F8"
+                        android:textSize="19sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:lineSpacingExtra="3dp"
+                        android:text="Mueve el teléfono para posponer la alarma"
+                        android:textColor="#FFB2B9C8"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <com.valentin.despertador.ui.widget.ToggleView
+                    android:id="@+id/movimiento_interruptor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp" />
+            </view>
+
+            <view
+                class="com.valentin.despertador.ui.widget.Styled$Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="36dp"
+                android:layout_marginBottom="20dp"
+                android:orientation="vertical"
+                android:paddingStart="18dp"
+                android:paddingTop="22dp"
+                android:paddingEnd="18dp"
+                android:paddingBottom="22dp">
+
+                <view
+                    style="@style/TituloTarjeta"
+                    class="com.valentin.despertador.ui.widget.Styled$AccentText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sonido y voz" />
+
+                <TextView
+                    style="@style/EtiquetaCampo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="22dp"
+                    android:text="Música" />
+
+                <include
+                    android:id="@+id/musica"
+                    layout="@layout/desplegable" />
+
+                <TextView
+                    style="@style/EtiquetaCampo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="22dp"
+                    android:text="Voz" />
+
+                <include
+                    android:id="@+id/voz"
+                    layout="@layout/desplegable" />
+            </view>
+        </LinearLayout>
+    </ScrollView>
+
+    <view
+        android:id="@+id/guardar"
+        style="@style/BotonGrande"
+        class="com.valentin.despertador.ui.widget.Styled$AccentButton"
+        android:text="Guardar alarma" />
+</LinearLayout>

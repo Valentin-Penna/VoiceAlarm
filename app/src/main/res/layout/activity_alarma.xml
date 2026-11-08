@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/raiz"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingStart="24dp"
+    android:paddingEnd="24dp">
+
+    <Space
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_weight="0.7" />
+
+    <!-- Arriba: nombre, hora y fecha -->
+    <view
+        android:id="@+id/nombre"
+        class="com.valentin.despertador.ui.widget.Styled$AccentText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:letterSpacing="0.2"
+        android:textAllCaps="true"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/hora"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-24dp"
+        android:layout_marginBottom="-24dp"
+        android:fontFamily="sans-serif-light"
+        android:padding="24dp"
+        android:includeFontPadding="false"
+        android:textColor="#FFF2F4F8"
+        android:textSize="100sp" />
+
+    <TextView
+        android:id="@+id/fecha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFB2B9C8"
+        android:textSize="17sp" />
+
+    <Space
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <!-- Centro: el mensaje, o cuándo vuelve a sonar -->
+    <LinearLayout
+        android:id="@+id/sonando"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/mensaje"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:lineSpacingExtra="6dp"
+            android:maxLines="4"
+            android:textColor="#FFF2F4F8"
+            android:textSize="27sp" />
+
+        <TextView
+            android:id="@+id/veces"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:textColor="#FF6F778A"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/retrasada"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/retrasada_veces"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFB2B9C8"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="26dp"
+            android:text="Vuelve a sonar a las"
+            android:textColor="#FFB2B9C8"
+            android:textSize="19sp" />
+
+        <view
+            android:id="@+id/vuelve"
+            class="com.valentin.despertador.ui.widget.Styled$AccentText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:textSize="58sp" />
+
+        <TextView
+            android:id="@+id/cuenta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FF6F778A"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <Space
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_weight="1.2" />
+
+    <!-- Abajo: retrasar y deslizar para apagar -->
+    <LinearLayout
+        android:id="@+id/zona_retrasar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingBottom="26dp">
+
+        <view
+            android:id="@+id/retrasar"
+            class="com.valentin.despertador.ui.widget.Styled$GhostButton"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:letterSpacing="0.15"
+            android:textAllCaps="true"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/limite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="#FF6F778A"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/sin_retrasar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ya no se puede retrasar"
+            android:textColor="#FFB2B9C8"
+            android:textSize="15sp"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <com.valentin.despertador.ui.widget.SlideToConfirmView
+        android:id="@+id/apagar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Space
+        android:layout_width="1dp"
+        android:layout_height="28dp" />
+</LinearLayout>

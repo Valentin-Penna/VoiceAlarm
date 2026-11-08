@@ -1,0 +1,33 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Campanas -->
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M34,40 A10,10 0 0,1 46,30"
+        android:strokeColor="#00D4FF"
+        android:strokeLineCap="round"
+        android:strokeWidth="5" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M74,40 A10,10 0 0,0 62,30"
+        android:strokeColor="#00D4FF"
+        android:strokeLineCap="round"
+        android:strokeWidth="5" />
+    <!-- Esfera -->
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M33,58 A21,21 0 1,0 75,58 A21,21 0 1,0 33,58 Z"
+        android:strokeColor="#00D4FF"
+        android:strokeWidth="5" />
+    <!-- Agujas -->
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M54,46 L54,58 L62,64"
+        android:strokeColor="#FFFFFF"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:strokeWidth="4.5" />
+</vector>

@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/raiz"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/barra"
+        layout="@layout/barra_superior" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="22dp"
+            android:paddingEnd="22dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Configuración"
+                android:textColor="#FFF2F4F8"
+                android:textSize="31sp" />
+
+            <view
+                android:id="@+id/disenos"
+                class="com.valentin.despertador.ui.widget.Styled$GhostButton"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginTop="28dp"
+                android:letterSpacing="0.06"
+                android:text="Seleccionar diseños"
+                android:textSize="16sp" />
+
+            <view
+                class="com.valentin.despertador.ui.widget.Styled$Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="26dp"
+                android:orientation="vertical"
+                android:paddingStart="18dp"
+                android:paddingTop="22dp"
+                android:paddingEnd="18dp"
+                android:paddingBottom="22dp">
+
+                <view
+                    style="@style/TituloTarjeta"
+                    class="com.valentin.despertador.ui.widget.Styled$AccentText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Temporizadores" />
+
+                <TextView
+                    style="@style/EtiquetaCampo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="22dp"
+                    android:text="Duración de la alarma (min)" />
+
+                <EditText
+                    android:id="@+id/duracion"
+                    style="@style/Campo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:importantForAutofill="no"
+                    android:inputType="number"
+                    android:maxLength="3" />
+
+                <TextView
+                    style="@style/EtiquetaCampo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="22dp"
+                    android:text="Intervalo entre mensajes por voz (seg)" />
+
+                <EditText
+                    android:id="@+id/intervalo"
+                    style="@style/Campo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:importantForAutofill="no"
+                    android:inputType="number"
+                    android:maxLength="3" />
+
+                <TextView
+                    style="@style/EtiquetaCampo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="22dp"
+                    android:text="Tiempo de posponer (min)" />
+
+                <EditText
+                    android:id="@+id/posponer"
+                    style="@style/Campo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:importantForAutofill="no"
+                    android:inputType="number"
+                    android:maxLength="3" />
+
+                <TextView
+                    style="@style/EtiquetaCampo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="22dp"
+                    android:text="Alarma rápida" />
+
+                <TextView
+                    android:id="@+id/rapida"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="12dp"
+                    android:gravity="center_vertical"
+                    android:paddingStart="13dp"
+                    android:paddingEnd="13dp"
+                    android:textColor="#FFF2F4F8"
+                    android:textSize="19sp" />
+            </view>
+
+            <view
+                class="com.valentin.despertador.ui.widget.Styled$Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="26dp"
+                android:layout_marginBottom="20dp"
+                android:orientation="vertical"
+                android:paddingStart="18dp"
+                android:paddingTop="22dp"
+                android:paddingEnd="18dp"
+                android:paddingBottom="22dp">
+
+                <view
+                    style="@style/TituloTarjeta"
+                    class="com.valentin.despertador.ui.widget.Styled$AccentText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sonido y voz predeterminados" />
+
+                <TextView
+                    style="@style/EtiquetaCampo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="22dp"
+                    android:text="Seleccionar música" />
+
+                <include
+                    android:id="@+id/musica"
+                    layout="@layout/desplegable" />
+
+                <TextView
+                    style="@style/EtiquetaCampo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="22dp"
+                    android:text="Seleccionar voz" />
+
+                <include
+                    android:id="@+id/voz"
+                    layout="@layout/desplegable" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="26dp"
+                    android:text="Volumen de la música"
+                    android:textColor="#FFF2F4F8"
+                    android:textSize="18sp" />
+
+                <com.valentin.despertador.ui.widget.LineSlider
+                    android:id="@+id/volumen_musica"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="22dp"
+                    android:text="Volumen de la voz"
+                    android:textColor="#FFF2F4F8"
+                    android:textSize="18sp" />
+
+                <com.valentin.despertador.ui.widget.LineSlider
+                    android:id="@+id/volumen_voz"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp" />
+
+                <TextView
+                    android:id="@+id/probar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="30dp"
+                    android:background="?attr/selectableItemBackground"
+                    android:letterSpacing="0.18"
+                    android:paddingStart="18dp"
+                    android:paddingTop="10dp"
+                    android:paddingEnd="18dp"
+                    android:paddingBottom="10dp"
+                    android:text="PROBAR SONIDO"
+                    android:textColor="#FFB2B9C8"
+                    android:textSize="17sp" />
+            </view>
+        </LinearLayout>
+    </ScrollView>
+
+    <view
+        android:id="@+id/guardar"
+        style="@style/BotonGrande"
+        class="com.valentin.despertador.ui.widget.Styled$AccentButton"
+        android:text="Guardar cambios" />
+</LinearLayout>

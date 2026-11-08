@@ -1,0 +1,56 @@
+<resources>
+    <style name="Theme.Despertador" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@color/fondo</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="colorAccent">#FF00D4FF</item>
+        <item name="android:textColorHint">#FF6F778A</item>
+    </style>
+
+    <!-- Etiqueta pequeña en mayúsculas encima de un campo -->
+    <style name="Etiqueta">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#FFB2B9C8</item>
+        <item name="android:letterSpacing">0.14</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <!-- Texto gris pequeño encima de un campo -->
+    <style name="EtiquetaCampo">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#FFB2B9C8</item>
+    </style>
+
+    <!-- Título de una tarjeta, en el color del diseño -->
+    <style name="TituloTarjeta">
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">0.14</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <!-- Campo de texto con solo una línea debajo -->
+    <style name="Campo">
+        <item name="android:background">@drawable/linea_campo</item>
+        <item name="android:textColor">#FFF2F4F8</item>
+        <item name="android:textSize">19sp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:paddingStart">0dp</item>
+        <item name="android:paddingEnd">0dp</item>
+    </style>
+
+    <!-- Botón grande de abajo ("GUARDAR …") -->
+    <style name="BotonGrande">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">54dp</item>
+        <item name="android:layout_marginStart">22dp</item>
+        <item name="android:layout_marginEnd">22dp</item>
+        <item name="android:layout_marginTop">26dp</item>
+        <item name="android:layout_marginBottom">26dp</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:letterSpacing">0.15</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+    <color name="fondo">#FF0B0E15</color>
+    <color name="icono_fondo">#FF121826</color>
+</resources>
