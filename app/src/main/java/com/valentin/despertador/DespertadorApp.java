@@ -7,6 +7,7 @@ import android.app.NotificationManager;
 
 import com.valentin.despertador.alarm.AlarmService;
 import com.valentin.despertador.alarm.Scheduler;
+import com.valentin.despertador.audio.LoudVolume;
 import com.valentin.despertador.audio.Tracks;
 import com.valentin.despertador.audio.VoiceCache;
 import com.valentin.despertador.audio.Voices;
@@ -17,6 +18,8 @@ public class DespertadorApp extends Application {
     public void onCreate() {
         super.onCreate();
         AlarmStore.init(this);
+        // Si la app se cerró de golpe mientras sonaba, devuelve el volumen de alarma de antes
+        LoudVolume.restore(this);
 
         // Canal de la notificación de la alarma (sin sonido: la música la pone el servicio)
         NotificationChannel channel = new NotificationChannel(AlarmService.CHANNEL, "Alarmas", NotificationManager.IMPORTANCE_HIGH);

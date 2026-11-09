@@ -21,6 +21,7 @@ import androidx.core.app.ServiceCompat;
 
 import com.valentin.despertador.R;
 import com.valentin.despertador.audio.AlarmSound;
+import com.valentin.despertador.audio.LoudVolume;
 import com.valentin.despertador.data.Alarm;
 import com.valentin.despertador.data.AlarmStore;
 import com.valentin.despertador.data.AppSettings;
@@ -68,6 +69,15 @@ public class AlarmService extends Service implements SensorEventListener {
     /** Al llegar al límite, la notificación pierde el botón de retrasar. */
     private final Runnable limitReached = () -> {
         if (alarm != null) goForeground(alarm);
+    };
+
+    /** Si alguien baja o silencia el volumen mientras suena, se vuelve a subir. */
+    private final Runnable keepLoud = new Runnable() {
+        @Override
+        public void run() {
+            LoudVolume.keepUp(AlarmService.this);
+            handler.postDelayed(this, 1000);
+        }
     };
 
     @Override
@@ -134,6 +144,8 @@ public class AlarmService extends Service implements SensorEventListener {
             Sensor acc = sensors.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
             if (acc != null) sensors.registerListener(this, acc, SensorManager.SENSOR_DELAY_GAME);
         }
+
+        handler.postDelayed(keepLoud, 1000);
 
         if (a.ringUntil != null && a.ringUntil > now) handler.postDelayed(limitReached, a.ringUntil - now + 500);
 

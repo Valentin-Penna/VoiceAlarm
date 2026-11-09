@@ -85,6 +85,8 @@ public class AlarmSound {
             this.message = message.trim();
             this.voiceIds = VoiceCache.ids(voiceIds);
             this.intervalMs = Math.max(1, intervalSec) * 1000L;
+            // Que suene aunque el volumen de alarma del móvil esté bajado o silenciado
+            LoudVolume.raise(context);
             startMusic(musicId);
             long musicStarted = SystemClock.uptimeMillis();
             if (this.message.isEmpty()) return;
@@ -278,6 +280,7 @@ public class AlarmSound {
                 tts.shutdown();
             }
             tts = null;
+            LoudVolume.restore(context);
             thread.quitSafely();
         });
     }
