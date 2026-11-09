@@ -54,7 +54,12 @@ public class MainActivity extends BaseActivity {
         View settings = findViewById(R.id.ajustes);
         settings.setBackground(Ui.pill(this, palette.card, 0));
         settings.setOnClickListener(v -> startActivity(new Intent(this, SettingsActivity.class)));
-        findViewById(R.id.anadir).setOnClickListener(v -> EditActivity.open(this, new Alarm(AlarmStore.newId()), true));
+        findViewById(R.id.anadir).setOnClickListener(v -> {
+            // Las alarmas nuevas empiezan sonando todos los días
+            Alarm alarm = new Alarm(AlarmStore.newId());
+            for (int d = 1; d <= 7; d++) alarm.days.add(d);
+            EditActivity.open(this, alarm, true);
+        });
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
                 && checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {

@@ -47,6 +47,20 @@ public final class Tracks {
         add(song("Nocturno op. 9 nº 2 (Chopin)", "chopin_nocturno", R.raw.chopin_nocturno));
         add(song("Pequeña serenata nocturna (Mozart)", "mozart_serenata", R.raw.mozart_serenata));
         add(song("Vals del Lago de los cisnes (Chaikovski)", "chaikovski_lago_cisnes", R.raw.chaikovski_lago_cisnes));
+        // Música de meditación: FreePD (CC0), Kevin MacLeod (CC BY 3.0) y Joey Bond (CC0)
+        add(song("Deep Relaxation", "deep_relaxation", R.raw.deep_relaxation));
+        add(song("Elf Meditation", "elf_meditation", R.raw.elf_meditation));
+        add(song("Ancient Winds", "ancient_winds", R.raw.ancient_winds));
+        add(song("Wind of the Rainforest", "wind_of_the_rainforest", R.raw.wind_of_the_rainforest));
+        add(song("Ebbs and Flows", "ebbs_and_flows", R.raw.ebbs_and_flows));
+        add(song("River Meditation", "river_meditation", R.raw.river_meditation));
+        add(song("Meditation Impromptu 1", "meditation_impromptu_1", R.raw.meditation_impromptu_1));
+        add(song("Meditation Impromptu 2", "meditation_impromptu_2", R.raw.meditation_impromptu_2));
+        add(song("Meditation Impromptu 3", "meditation_impromptu_3", R.raw.meditation_impromptu_3));
+        add(song("Organic Meditations 1", "organic_meditations_1", R.raw.organic_meditations_1));
+        add(song("Organic Meditations 3", "organic_meditations_3", R.raw.organic_meditations_3));
+        add(song("Relaxing Piano Music", "relaxing_piano_music", R.raw.relaxing_piano_music));
+        add(song("Jade Pillow", "jade_pillow", R.raw.jade_pillow));
     }});
 
     /** Avisa cuando ya se han leído los despertadores del móvil. */

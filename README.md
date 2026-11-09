@@ -29,10 +29,12 @@ Java con el sistema de vistas de Android (pantallas en XML) y AppCompat como ún
 
 **La voz, justo al segundo.** El motor de voz de Android tarda entre uno y tres segundos en arrancar, así que pedirle que hable al segundo no basta. La app graba cada mensaje con cada voz elegida en el momento en que guardas la alarma (`synthesizeToFile`). Al sonar, la grabación ya está cargada en un reproductor y solo hay que darle al play. Todo el audio va en un hilo propio para que abrir la pantalla de la alarma no lo retrase. Medido: 1,00 s entre la música y la voz, frente a casi 3 s hablando en directo. Si faltara una grabación, la app usa el motor de voz en directo.
 
-**Música clásica de despertar, sin problemas de licencia.** Las canciones son piezas tranquilas como "La mañana" de Grieg, "Clair de lune" de Debussy o la "Gymnopédie nº 1" de Satie, en grabaciones de dominio público o CC0 de Wikimedia Commons, así que se pueden incluir en una app pública. De cada una se toma un fragmento de dos minutos y medio, sin el silencio inicial, con un final suave para que el bucle no corte de golpe y con el volumen igualado entre todas. Debajo aparecen los tonos de alarma del propio teléfono, leídos con `RingtoneManager`, para quien prefiera un despertador de toda la vida.
+**Música clásica de despertar, sin problemas de licencia.** Las canciones son piezas tranquilas como "La mañana" de Grieg, "Clair de lune" de Debussy o la "Gymnopédie nº 1" de Satie, en grabaciones de dominio público o CC0 de Wikimedia Commons, y música de fondo de meditación con licencias libres, así que se pueden incluir en una app pública. De cada una se toma un fragmento de dos minutos y medio, sin el silencio inicial, con un final suave para que el bucle no corte de golpe y con el volumen igualado entre todas. Debajo aparecen los tonos de alarma del propio teléfono, leídos con `RingtoneManager`, para quien prefiera un despertador de toda la vida.
 
 **Datos.** Las alarmas y los ajustes se guardan como JSON en las preferencias de la app. Son pocos datos y no hace falta una base de datos.
 
 ## Créditos
 
 Música: grabaciones de dominio público y CC0 de [Wikimedia Commons](https://commons.wikimedia.org/) (Musopen y otros intérpretes), elegidas a partir del catálogo de [QuietRingtones](https://github.com/Quiet115/QuietRingtones-catalog).
+
+Música de meditación: "Deep Relaxation", "Elf Meditation", "Ancient Winds", "Wind of the Rainforest", "Ebbs and Flows" y "River Meditation" de [FreePD](https://freepd.com/) (CC0); "Jade Pillow" de Joey Bond (CC0); y "Meditation Impromptu 01, 02 y 03", "Organic Meditations One y Three" y "Relaxing Piano Music" de Kevin MacLeod ([incompetech.com](https://incompetech.com/)), con licencia [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/).

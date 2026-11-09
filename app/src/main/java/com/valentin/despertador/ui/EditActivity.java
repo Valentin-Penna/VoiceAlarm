@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.valentin.despertador.R;
@@ -215,43 +216,78 @@ public class EditActivity extends BaseActivity {
         });
     }
 
+    private static final java.util.Set<Integer> ALL_DAYS = new TreeSet<>(java.util.Arrays.asList(1, 2, 3, 4, 5, 6, 7));
+    private static final java.util.Set<Integer> WEEKDAYS = new TreeSet<>(java.util.Arrays.asList(1, 2, 3, 4, 5));
+
+    /** "Repetir": Una vez, Diariamente, Lunes a Viernes o Personalizado. */
     private void editDays() {
         View view = LayoutInflater.from(this).inflate(R.layout.dialog_repetir, null, false);
         Dialog dialog = Dialogs.panel(this, view);
+        LinearLayout options = view.findViewById(R.id.opciones);
+        boolean custom = !days.isEmpty() && !days.equals(ALL_DAYS) && !days.equals(WEEKDAYS);
+        addOption(options, "Una vez", days.isEmpty(), true, v -> setDays(dialog, new TreeSet<>()));
+        addOption(options, "Diariamente", days.equals(ALL_DAYS), true, v -> setDays(dialog, new TreeSet<>(ALL_DAYS)));
+        addOption(options, "Lunes a Viernes", days.equals(WEEKDAYS), true, v -> setDays(dialog, new TreeSet<>(WEEKDAYS)));
+        addOption(options, "Personalizado", custom, true, v -> {
+            dialog.dismiss();
+            editCustomDays();
+        });
+        dialog.show();
+    }
+
+    private void setDays(Dialog dialog, TreeSet<Integer> chosen) {
+        days = chosen;
+        refreshTexts();
+        dialog.dismiss();
+    }
+
+    /** "Personalizado": se marcan los días uno a uno. Al aceptar, si coincide con otro modo, pasa a ese modo. */
+    private void editCustomDays() {
+        View view = LayoutInflater.from(this).inflate(R.layout.dialog_repetir, null, false);
+        Dialog dialog = Dialogs.panel(this, view);
+        LinearLayout options = view.findViewById(R.id.opciones);
+        String[] names = {"Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"};
         TreeSet<Integer> chosen = new TreeSet<>(days);
-        TextView summary = view.findViewById(R.id.resumen);
-        LinearLayout row = view.findViewById(R.id.dias);
-        String[] letters = {"L", "M", "X", "J", "V", "S", "D"};
         Runnable[] draw = new Runnable[1];
         draw[0] = () -> {
-            summary.setText(Format.days(chosen));
-            row.removeAllViews();
+            options.removeAllViews();
             for (int i = 0; i < 7; i++) {
                 int day = i + 1;
-                boolean on = chosen.contains(day);
-                TextView circle = new TextView(this);
-                circle.setText(letters[i]);
-                circle.setTextSize(16);
-                circle.setGravity(Gravity.CENTER);
-                circle.setTextColor(on ? palette.onAccent() : Palette.TEXT_MAIN);
-                circle.setBackground(Ui.pill(this, on ? palette.accent : palette.card, on ? palette.accent : palette.border));
-                circle.setOnClickListener(v -> {
+                addOption(options, names[i], chosen.contains(day), false, v -> {
                     if (!chosen.remove(day)) chosen.add(day);
                     draw[0].run();
                 });
-                // Los siete círculos repartidos a lo ancho
-                LinearLayout cell = new LinearLayout(this);
-                cell.setGravity(Gravity.CENTER);
-                cell.addView(circle, new LinearLayout.LayoutParams(Ui.dp(this, 40), Ui.dp(this, 40)));
-                row.addView(cell, new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f));
             }
         };
         draw[0].run();
-        view.findViewById(R.id.aceptar).setOnClickListener(v -> {
-            days = chosen;
-            refreshTexts();
-            dialog.dismiss();
-        });
+        // Si no caben los siete días, la lista se desplaza
+        ScrollView scroll = view.findViewById(R.id.scroll);
+        int max = Math.round(getResources().getDisplayMetrics().heightPixels * 0.55f);
+        options.measure(View.MeasureSpec.makeMeasureSpec(getResources().getDisplayMetrics().widthPixels, View.MeasureSpec.AT_MOST),
+                View.MeasureSpec.UNSPECIFIED);
+        if (options.getMeasuredHeight() > max) scroll.getLayoutParams().height = max;
+        View accept = view.findViewById(R.id.aceptar);
+        accept.setVisibility(View.VISIBLE);
+        // Sin días = una vez; todos = diariamente; de lunes a viernes = Lunes a Viernes (lo hace el propio conjunto de días)
+        accept.setOnClickListener(v -> setDays(dialog, chosen));
         dialog.show();
+    }
+
+    /** Píldora de una opción: la elegida se ve del color del diseño. */
+    private void addOption(LinearLayout parent, String text, boolean selected, boolean wide, View.OnClickListener click) {
+        TextView option = new TextView(this);
+        option.setText(text);
+        option.setTextSize(16);
+        option.setLetterSpacing(0.08f);
+        option.setGravity(Gravity.CENTER);
+        option.setTextColor(Palette.TEXT_MAIN);
+        int fill = selected ? androidx.core.graphics.ColorUtils.blendARGB(palette.card, palette.accent, 0.4f) : palette.card;
+        option.setBackground(Ui.pill(this, fill, selected ? palette.accent : palette.border));
+        option.setOnClickListener(click);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                wide ? LinearLayout.LayoutParams.MATCH_PARENT : Ui.dp(this, 220), Ui.dp(this, 46));
+        lp.gravity = Gravity.CENTER_HORIZONTAL;
+        lp.topMargin = Ui.dp(this, wide ? 14 : 16);
+        parent.addView(option, lp);
     }
 }
