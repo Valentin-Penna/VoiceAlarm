@@ -16,7 +16,7 @@ import java.util.Set;
 
 /**
  * Músicas de la alarma:
- * - Arriba, canciones tranquilas sin letra incluidas en la app (CC0 de FreePD).
+ * - Arriba, música clásica tranquila de despertar (grabaciones de dominio público o CC0 de Wikimedia Commons).
  * - Debajo, los despertadores (tonos de alarma) del propio móvil.
  */
 public final class Tracks {
@@ -34,26 +34,19 @@ public final class Tracks {
     /** El tono de alarma que el móvil tiene puesto por defecto. */
     public static final String SYSTEM = "sistema";
     /** Música que viene de serie. */
-    public static final String DEFAULT = "raw:nostalgic_piano";
+    public static final String DEFAULT = "raw:grieg_la_manana";
 
     /** Canciones incluidas. El id es "raw:<nombre del archivo>" (no cambia entre versiones). */
     public static final List<Track> SONGS = Collections.unmodifiableList(new ArrayList<Track>() {{
         // La referencia a R.raw evita que el APK final quite el archivo al optimizar
-        add(song("A Waltz For Naseem", "waltz_for_naseem", R.raw.waltz_for_naseem));
-        add(song("Amazing Grace", "amazing_grace", R.raw.amazing_grace));
-        add(song("Aquarium", "aquarium", R.raw.aquarium));
-        add(song("Horizon Flare", "horizon_flare", R.raw.horizon_flare));
-        add(song("Infinite Peace", "infinite_peace", R.raw.infinite_peace));
-        add(song("Infinite Wonder", "infinite_wonder", R.raw.infinite_wonder));
-        add(song("Isolation Waltz", "isolation_waltz", R.raw.isolation_waltz));
-        add(song("Kalimba Relaxation", "kalimba_relaxation", R.raw.kalimba_relaxation));
-        add(song("Mana Two", "mana_two", R.raw.mana_two));
-        add(song("Nostalgic Piano", "nostalgic_piano", R.raw.nostalgic_piano));
-        add(song("Painting Room", "painting_room", R.raw.painting_room));
-        add(song("Parhelion", "parhelion", R.raw.parhelion));
-        add(song("Piano Magic Motive", "piano_magic_motive", R.raw.piano_magic_motive));
-        add(song("Travelers Notebook", "travelers_notebook", R.raw.travelers_notebook));
-        add(song("Winter", "winter", R.raw.winter));
+        add(song("La mañana (Grieg)", "grieg_la_manana", R.raw.grieg_la_manana));
+        add(song("Aire en sol (Bach)", "bach_aire", R.raw.bach_aire));
+        add(song("Clair de lune (Debussy)", "debussy_clair_de_lune", R.raw.debussy_clair_de_lune));
+        add(song("El Danubio azul (Strauss)", "strauss_danubio_azul", R.raw.strauss_danubio_azul));
+        add(song("Gymnopédie nº 1 (Satie)", "satie_gymnopedie", R.raw.satie_gymnopedie));
+        add(song("Nocturno op. 9 nº 2 (Chopin)", "chopin_nocturno", R.raw.chopin_nocturno));
+        add(song("Pequeña serenata nocturna (Mozart)", "mozart_serenata", R.raw.mozart_serenata));
+        add(song("Vals del Lago de los cisnes (Chaikovski)", "chaikovski_lago_cisnes", R.raw.chaikovski_lago_cisnes));
     }});
 
     /** Avisa cuando ya se han leído los despertadores del móvil. */
